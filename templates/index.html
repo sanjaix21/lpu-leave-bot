@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LPU Leave Application Bot</title>
+</head>
+
+<body>
+  <h1>LPU Leave Application Bot</h1>
+  <form action="/apply_leave" method="post">
+    <label for="student_reg_id">Student Registration ID:</label><br>
+    <input type="text" id="student_reg_id" name="student_reg_id"><br><br>
+
+    <label for="student_password">Password:</label><br>
+    <input type="password" id="student_password" name="student_password"><br><br>
+
+    <label for="leave_type">Leave Type:</label><br>
+    <select id="leave_type" name="leave_type">
+      <option value="1">Day Leave</option>
+      <option value="2">Night Leave</option>
+      <option value="3">Day Leave Extended</option>
+      <option value="4">Night Leave Extended</option>
+    </select><br><br>
+
+    <div id="leave_days_container" style="display:none;">
+      <label for="leave_days">Number Leave Days:</label><br>
+      <input type="text" id="leave_days" name="leave_days"><br><br>
+    </div>
+
+    <input type="submit" value="Apply Leave">
+    <h2>After clicking Apply Leave wait for few minutes.</h2>
+  </form>
+</body>
+
+</html>
+
+<script>
+  document.getElementById('leave_type').addEventListener('change', function () {
+    var leaveType = parseInt(this.value);
+    var leaveDaysContainer = document.getElementById('leave_days_container');
+    if (leaveType === 2 || leaveType === 4) {
+      leaveDaysContainer.style.display = 'block';
+    } else {
+      leaveDaysContainer.style.display = 'none';
+    }
+  });
+</script>

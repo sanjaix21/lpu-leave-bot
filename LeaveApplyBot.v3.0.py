@@ -32,9 +32,13 @@ def apply_leave():
 
     leave_type = actual_leave_type(leave_type)
     # Opening FireFox
-    service = Service(executable_path="/home/flightman/.local/bin/geckodriver")
-    options = webdriver.FirefoxOptions()
-    driver = webdriver.Firefox(service=service, options=options)
+
+    # Uncomment the below if you have custom path to the webdriver
+    # service = Service(executable_path="path to geckodriver")
+    # options = webdriver.FirefoxOptions()
+    # driver = webdriver.Firefox(service=service, options=options)
+
+    driver = webdriver.Firefox()
 
     # loging in first landing page (LPU requires login twice)
     driver.get("https://ums.lpu.in/lpuums")
